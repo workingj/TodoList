@@ -1,0 +1,10 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <rect id="svg_3" height="200" width="200" y="-0" x="0" stroke-width="4" stroke="#003f7f" fill="#1b9aaa"/>
+  <line fill="none" stroke="#ffc43d" x1="85.86126" y1="154.34958" x2="23.92103" y2="80.8422" id="svg_1" stroke-linejoin="undefined" stroke-linecap="undefined" stroke-width="30"/>
+  <line fill="none" stroke="#ffc43d" x1="170.89613" y1="149.39205" x2="88.36721" y2="51.03106" id="svg_2" stroke-linejoin="undefined" stroke-linecap="undefined" stroke-width="30" transform="rotate(90, 129.632, 100.212)"/>
+  <line fill="none" stroke="#003f7f" x1="179.5058" y1="174.5031" x2="84.74584" y2="61.45066" id="svg_4" stroke-linejoin="undefined" stroke-linecap="undefined" stroke-width="4" transform="rotate(89.9985, 132.126, 117.977)"/>
+  <line fill="none" stroke="#003f7f" x1="80.38395" y1="121.82228" x2="37.57325" y2="71.01682" id="svg_5" stroke-linejoin="undefined" stroke-linecap="undefined" stroke-width="4"/>
+ </g>
+
+</svg>
