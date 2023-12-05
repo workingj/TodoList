@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/todoicon.svg" type="image/x-icon">
-    <title>TodoList App</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha384-cEu5cD9QEoOrn6PzQkP2vn2H3Axsp3+Z5ugB0GrMIcI5HtA6Aj5jJgF1lN3cbz"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/144c450816.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <div class="container">
-      <!-- Search Bar -->
-      <input type="text" class="search-bar" placeholder="Search..." />
 
-      <!-- Dropdown -->
-      <select class="dropdown">
-        <option value="option1">All</option>
-        <option value="option2">Done</option>
-      </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href=./img/todoicon.svg" type="image/x-icon">
+  <title>TodoList App</title>
+  <link href="/dist/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha384-cEu5cD9QEoOrn6PzQkP2vn2H3Axsp3+Z5ugB0GrMIcI5HtA6Aj5jJgF1lN3cbz" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/144c450816.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Search Bar -->
+    <input type="text" class="search-bar" placeholder="Search..." />
+
+    <!-- Dropdown -->
+    <select class="dropdown">
+      <option value="option1">All</option>
+      <option value="option2">Done</option>
+    </select>
 
       <!-- List Items -->
       <ul>
@@ -33,26 +29,27 @@
           <span>Text 1</span>
           <input type="checkbox" />
           <i class="fas fa-edit edit-icon"></i>
-          <i class="fas fa-trash delete-icon"></i>
+          <i class="fas fa-delete delete-icon"></i>
         </li>
         <li class="list-item">
           <span>Text 2</span>
           <input type="checkbox" />
           <i class="fas fa-edit edit-icon"></i>
-          <i class="fas fa-trash delete-icon"></i>
+          <i class="fas fa-delete delete-icon"></i>
         </li>
         <li class="list-item">
           <span>Text 3</span>
           <input type="checkbox" />
           <i class="fas fa-edit edit-icon"></i>
-          <i class="fas fa-trash delete-icon"></i>
+          <i class="fas fa-delete delete-icon"></i>
         </li>
       </ul>
 
-      <!-- Create Todo Button -->
-      <button class="add-button">
-        <i class="fas fa-plus"></i>
-      </button>
-    </div>
-  </body>
+    <!-- Create Todo Button -->
+    <button class="add-button">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</body>
+
 </html>
