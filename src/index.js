@@ -1,11 +1,13 @@
 // Todo Item Object
 class TodoItem {
+  #id;
   #creationDate;
   #dueDate;
   #content;
   #state;
   #due;
   constructor(text, deadline) {
+    this.id = Date.now();
     this.creationDate = Date.now();
     this.dueDate = this.creationDate + deadline * 86400; // Seconds per day
     this.content = text;
@@ -14,16 +16,27 @@ class TodoItem {
   }
 }
 
-function itemRead(item) {
+function itemGetContent(item) {
   return item.content;
 }
-
-function itemUpdate(item, text) {
-  item.content = text;
+function itemGetId(item) {
+  return item.id + "";
 }
 
-function itemDelete(item, sender) {
-  alert("<b>ToDo !!!</b><br /> Delete from Local Storage <br />" + sender);
+function itemUpdate(event) {
+  alert('event');
+  // item.content = text;
+}
+
+function itemDelete(event) {
+  const id = event.target.dataset.id;
+  document.getElementById(id).remove();
+
+  let items = loadLocalStorage();
+  items = items.filter((item) => item.id != id);
+
+  updateLocalStorage(items);
+  updateTodoListHTML();
 }
 
 function itemCheckDueDate(item) {
@@ -50,10 +63,7 @@ function updateTodoListHTML() {
   todolist.innerHTML = "";
 
   listitems.forEach((item) => {
-    let li = document.createElement("li");
-
-    li.innerHTML = itemRead(item);
-    todolist.appendChild(li);
+    todolist.appendChild(createListitem(item));
   });
 }
 
@@ -75,4 +85,33 @@ function createNewItem() {
     listitems.push(new TodoItem(text, deadline));
     updateLocalStorage(listitems);
   }
+}
+
+function createListitem(item) {
+  // Create Listitem
+  let li = document.createElement("li");
+  li.setAttribute("id", itemGetId(item));
+  li.innerHTML = itemGetContent(item);
+
+  // Create Checkbox and add to Listitem
+  let btnCheck = document.createElement("INPUT");
+  btnCheck.setAttribute("type", "checkbox");
+  btnCheck.dataset.id = itemGetId(item);
+  li.appendChild(btnCheck);
+
+  // Create Edit Button and add to Listitem
+  let btnEdit = document.createElement("i");
+  btnEdit.setAttribute("class", "fas fa-edit edit-icon");
+  btnEdit.dataset.id = itemGetId(item);
+  btnEdit.addEventListener("click", itemUpdate);
+  li.appendChild(btnEdit);
+
+  // Create Delete Button and add to Listitem
+  let btnDelete = document.createElement("i");
+  btnDelete.setAttribute("class", "fas fa-trash delete-icon");
+  btnDelete.dataset.id = itemGetId(item);
+  btnDelete.addEventListener("click", itemDelete);
+  li.appendChild(btnDelete);
+
+  return li;
 }
