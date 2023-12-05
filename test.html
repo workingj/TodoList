@@ -7,13 +7,13 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha384-cEu5cD9QEoOrn6PzQkP2vn2H3Axsp3+Z5ugB0GrMIcI5HtA6Aj5jJgF1lN3cbz"
       crossorigin="anonymous"
     />
     <script
       src="https://kit.fontawesome.com/144c450816.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="./src/style.css" />
     <title>Todo List Test</title>
     <style>
       body {
@@ -25,7 +25,7 @@
         font-size: 20px;
       }
       li {
-        display: block;
+        display: flex;
         border: 1px solid silver;
         padding: 0.2em 1em;
         margin: 0.5em;
@@ -34,6 +34,10 @@
       }
       li:hover {
         background-color: #eee;
+      }
+      ul > li > span {
+        display: flex;
+        flex-grow: 1;
       }
       ul {
         padding: 0;
@@ -52,8 +56,9 @@
       }
 
       i {
-        display: inline-block;
-        margin: 1em;
+        display: flex;
+        flex-grow: 0;
+        margin: 0.2em;
       }
     </style>
   </head>
@@ -61,9 +66,7 @@
     <header></header>
     <main>
       <h1>Todo - List</h1>
-      <hr />
       <ul class="todolist" id="todolist"></ul>
-      <hr />
 
       <fieldset>
         <label for="todo-text">Description</label>
@@ -76,10 +79,11 @@
           <option value="3">3 Days</option>
           <option value="4">4 Days</option>
           <option value="5">5 Days</option>
+          <option value="-5">-5 Days</option>
         </select>
       </fieldset>
       <fieldset>
-        <button onclick="createNewItem()">New Entry</button>
+        <button onclick="listItemCreateNew()">New Entry</button>
       </fieldset>
     </main>
     <footer>footer</footer>
