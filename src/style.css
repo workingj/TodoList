@@ -1,0 +1,29 @@
+li[data-done="true"] {
+  border: 1px solid green !important;
+  text-decoration: line-through;
+  color: green;
+}
+
+li[data-done="false"] {
+  border: 1px solid silver;
+}
+li[data-due="true"] {
+  border: 1px solid orange;
+}
+
+li[data-due="false"] {
+}
+.due {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 0;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  text-align: center;
+  margin-right: -1em;
+}
