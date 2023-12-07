@@ -37,6 +37,12 @@
         padding: 2rem 0;
     }
 
+    li {
+        cursor: pointer;
+    }
+
+
+
     li[data-done="true"] {
         border: 1px solid green !important;
         text-decoration: line-through;
