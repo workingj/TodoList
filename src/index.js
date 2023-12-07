@@ -256,7 +256,7 @@ function openPopupDelete(event) {
 }
 
 function maybeDelete() {
-  listItemDelete() ? Math.round(Math.random()) : null;
+  listItemDelete() ? Math.round(Math.random()) === 1 : null;
 }
 
 function closePopup(a) {
