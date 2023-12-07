@@ -36,4 +36,10 @@
         font-size: 3rem;
         padding: 2rem 0;
     }
+
+    li {
+        cursor: pointer;
+    }
+
+
 }
