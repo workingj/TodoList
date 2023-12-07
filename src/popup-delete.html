@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OnClick Popup with Tailwind CSS</title>
-
+    <link href="/dist/output.css" rel="stylesheet">
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -29,7 +29,7 @@
       <p class="mb-4">Do you really want to delete?</p>
       <div class="pupUp-container" style="display: flex; justify-content: space-between;">
         <button onclick="yesDelete()" class="" id="yesDelete" >Yes</button>
-        <button onclick="closePopup()" class="" id="">No</button>
+        <button onclick="closePopup()" class="bg-caribbean-green-400 w-5" id="">No</button>
         <button onclick="maybeDelete()" class="" id="maybeDelete">Maybe</button>
       </div>
     </div>
