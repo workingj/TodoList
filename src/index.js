@@ -33,7 +33,7 @@ function localStorageLoad() {
     let items = localStorage.getItem("todolist");
     try {
       return JSON.parse(items);
-    } catch (error) {}
+    } catch (error) { }
   } else {
     return [];
   }
@@ -125,10 +125,10 @@ function createListitemHTML(item) {
 
   if (item.due) {
     // Urgend
-    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
   } else {
     // Normal
-    li.setAttribute("class", "list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
   }
 
   // Create Checkbox and add to Listitem
@@ -146,14 +146,14 @@ function createListitemHTML(item) {
 
   // Create Edit Button and add to Listitem
   let btnEdit = document.createElement("i");
-  btnEdit.setAttribute("class", "fas fa-edit edit-icon fa-xl");
+  btnEdit.setAttribute("class", "fas fa-edit edit-icon fa-lg");
   btnEdit.dataset.id = dataItemGetId(item);
   btnEdit.addEventListener("click", openPopupEdit);
   li.appendChild(btnEdit);
 
   // Create Delete Button and add to Listitem
   let btnDelete = document.createElement("i");
-  btnDelete.setAttribute("class", "fas fa-trash delete-icon fa-xl");
+  btnDelete.setAttribute("class", "fas fa-trash delete-icon fa-lg");
   btnDelete.dataset.id = dataItemGetId(item);
   btnDelete.addEventListener("click", openPopupDelete);
   li.appendChild(btnDelete);
