@@ -55,22 +55,28 @@ function listItemCreateNew() {
     listitems.push(new TodoItem(text, deadline));
     localStorageUpdate(listitems);
     updateTodoListHTML();
+    closePopup();
   }
 }
 
-function listItemEdit(event) {
-  let textinput = document.querySelector("#todo-text");
-  let deadlineinput = document.querySelector("#deadline");
+function listItemEdit() {
+  const textinput = document.querySelector("#edit-text");
   const text = textinput.value;
-
   if (text != "") {
+    const deadlineinput = document.querySelector("#deadline-edit");
+    const id = currentEvent.target.dataset.id;
     const deadline = deadlineinput.value;
-    textinput.value = "";
 
     let listitems = localStorageLoad();
-    listitems.push(new TodoItem(text, deadline));
+    const i = listitems.findIndex((item) => item.id == id);
+
+    listitems[i].content = text;
+    listitems[i].dueDate = listitems[i].creationDate + deadline * 86400;
+    textinput.value = "";
+
     localStorageUpdate(listitems);
     updateTodoListHTML();
+    closePopup();
   }
 }
 
@@ -78,30 +84,18 @@ function listItemCheckBox(event) {
   const id = event.target.dataset.id;
   let items = localStorageLoad();
   let i = items.findIndex((item) => item.id == id);
+  const chekcid = "check" + event.target.dataset.id;
+  let checkbox = document.getElementById(chekcid);
 
   if (document.getElementById(id).dataset.done == "false") {
     document.getElementById(id).dataset.done = true;
     items[i].done = true;
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left fa-xl");
   } else {
     document.getElementById(id).dataset.done = false;
     items[i].done = false;
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left fa-xl");
   }
-  localStorageUpdate(items);
-}
-
-function listItemCheckBox(event) {
-  const id = event.target.dataset.id;
-  let items = localStorageLoad();
-  let i = items.findIndex((item) => item.id == id);
-
-  if (document.getElementById(id).dataset.done == "false") {
-    document.getElementById(id).dataset.done = true;
-    items[i].done = true;
-  } else {
-    document.getElementById(id).dataset.done = false;
-    items[i].done = false;
-  }
-  // console.table(items);
   localStorageUpdate(items);
 }
 
@@ -114,6 +108,7 @@ function listItemDelete() {
 
   localStorageUpdate(items);
   updateTodoListHTML();
+  closePopup();
 }
 
 function createListitemHTML(item) {
@@ -132,11 +127,17 @@ function createListitemHTML(item) {
   }
 
   // Create Checkbox and add to Listitem
-  let checkbox = document.createElement("INPUT");
-  checkbox.setAttribute("type", "checkbox");
+  let checkbox = document.createElement("i");
   checkbox.dataset.id = dataItemGetId(item);
   checkbox.addEventListener("click", listItemCheckBox);
-  checkbox.checked = item.done;
+  checkbox.setAttribute("id", "check" + item.id);
+
+  if (item.done == true) {
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left fa-xl");
+  } else {
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left fa-xl");
+  }
+  checkbox.dataset.done = item.done;
   li.appendChild(checkbox);
 
   // Create Content Span
@@ -161,7 +162,8 @@ function createListitemHTML(item) {
   if (item.due && !item.done) {
     let days = document.createElement("div");
     days.textContent = Math.floor((getTimeStamp() - item.dueDate) / 86400);
-    days.setAttribute("class", "due");
+    days.setAttribute("class", "due ");
+    days.setAttribute("style", "float:right;");
     li.appendChild(days);
   }
 
@@ -245,6 +247,14 @@ function openPopupCreate(event) {
   overlay.style.display = "block";
 }
 function openPopupEdit(event) {
+  const textinput = document.querySelector("#edit-text");
+  const deadlineinput = document.querySelector("#deadline-edit");
+  const id = event.target.dataset.id;
+  const listitems = localStorageLoad();
+  const i = listitems.findIndex((item) => item.id == id);
+  textinput.value = listitems[i].content;
+  deadlineinput.value = listitems[i].dueDate;
+
   currentEvent = event;
   popupEdit.style.display = "block";
   overlay.style.display = "block";
@@ -257,6 +267,7 @@ function openPopupDelete(event) {
 
 function maybeDelete() {
   listItemDelete() ? Math.round(Math.random()) === 1 : null;
+  closePopup();
 }
 
 function closePopup(a) {
