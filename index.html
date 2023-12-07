@@ -31,14 +31,17 @@
         <input onkeyup="searchTodolistItems()" class="peer h-full w-full outline-none text-sm text-gray-700 pr-2" type="text" id="search" placeholder="Search something.." />
       </div>
 
-      <!-- Dropdown -->
-      <select onchange="filterTodolistItems()" id="categorie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-32">
-        <option selected>All</option>
-        <option value="done">Done</option>
-        <option value="due">Urgent</option>
-      </select>
-    </div>
-
+      <!-- TODO LIST -->
+      <ul class="w-full" id="todolist">
+        <!-- ITEM Normal -->
+        <li id="1701954201" data-due="false" data-done="false" class="list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
+          <!-- <i class="fa-regular fa-circle float-left fa-xl"></i>
+          <i class="fa-regular fa-circle-check float-left fa-xl"></i> -->
+          <!-- <input type="checkbox" data-id="1701954201" /> -->
+          <span>Normal</span>
+          <i class="fa-xl fas fa-edit edit-icon" data-id="1701954201" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-trash delete-icon" data-id="1701954201" aria-hidden="true"></i>
+        </li>
     <!-- TODO LIST -->
     <ul class="w-full" id="todolist">
       <!-- ITEM Normal -->
@@ -77,57 +80,62 @@
       </li>
     </ul>
 
-    <!-- POPOPS -->
-    <!-- Create Todo Button -->
-    <button onclick="openPopupCreate()" class="add-button bg-white hover:bg-yellow-300 hover:text-gray-500 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow marge">
-      <i class="fas fa-plus"></i>
-    </button>
-  </div>
-
-  <!-- Popup Create -->
-  <div id="popupCreate" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50">
-    <div style="display: flex; justify-content: flex-end; padding-bottom: 1em">
-      <button onclick="closePopup()" class="close-x" style="display: flex; justify-self: right"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <p class="mb-4">Create New Todo Item</p>
-    <textarea id="todo-text" rows="3" placeholder="Enter Todo text..." autofocus></textarea>
-    <div>
-      <div class="pupUp-container" style="display: flex; justify-content: space-between">
-        <select name="deadline" id="deadline">
-          <option value="1">1 Day</option>
-          <option value="2">2 Days</option>
-          <option selected value="3">3 Days</option>
-          <option value="4">4 Days</option>
-          <option value="5">5 Days</option>
-          <option value="-3">-3 Days</option>
-          <option value="-5">-5 Days</option>
-        </select>
-        <button onclick="closePopup(), listItemCreateNew()" class="">OK</button>
-        <button onclick="closePopup()" class="">Cancel</button>
+    <!-- Popup Create -->
+    <div id="popupCreate" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50">
+      <div style="display: flex; justify-content: flex-end; padding-bottom: 1em">
+        <button onclick="closePopup()" class="close-x" style="display: flex; justify-self: right"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="mb-4">Create New Todo Item</p>
+      <textarea id="todo-text" rows="3" placeholder="Enter Todo text..." autofocus required></textarea>
+      <div>
+        <div class="pupUp-container" style="display: flex; justify-content: space-between">
+          <select name="deadline" id="deadline" required>
+            <option value="1">1 Day</option>
+            <option value="2">2 Days</option>
+            <option selected value="3">3 Days</option>
+            <option value="4">4 Days</option>
+            <option value="5">5 Days</option>
+            <option value="-3">-3 Days</option>
+            <option value="-5">-5 Days</option>
+          </select>
+          <button onclick="listItemCreateNew()" class="">OK</button>
+          <button onclick="closePopup()" class="">Cancel</button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Popup Edit -->
 
-  <div id="popupEdit" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50">
-    <div style="display: flex; justify-content: flex-end; padding-bottom: 1em">
-      <button onclick="closePopup()" class="close-x" style="display: flex; justify-self: right"><i class="fa-solid fa-xmark"></i></button>
+    <div id="popupEdit" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50">
+      <div style="display: flex; justify-content: flex-end; padding-bottom: 1em">
+        <button onclick="closePopup()" class="close-x" style="display: flex; justify-self: right"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="mb-4">Change Todo Item Content</p>
+      <textarea id="edit-text" rows="3" placeholder="Enter Todo text..." autofocus required></textarea>
+      <div>
+        <div class="pupUp-container" style="display: flex; justify-content: space-between">
+          <select name="deadline-edit" id="deadline-edit" required>
+            <option value="1">1 Day</option>
+            <option value="2">2 Days</option>
+            <option value="3">3 Days</option>
+            <option value="4">4 Days</option>
+            <option value="5">5 Days</option>
+            <option value="-3">-3 Days</option>
+            <option value="-5">-5 Days</option>
+          </select>
+          <button onclick="listItemEdit()" class="">OK</button>
+          <button onclick="closePopup()" class="">Cancel</button>
+        </div>
+      </div>
     </div>
     <p class="mb-4">Change Todo Item Content</p>
     <textarea rows="3" placeholder="Enter Todo text..." autofocus></textarea>
     <div>
       <div class="pupUp-container" style="display: flex; justify-content: space-between">
-        <select>
-          <option value="deadline" selected>Deadline</option>
-          <option value="1">1 day</option>
-          <option value="2">2 days</option>
-          <option value="3">3 days</option>
-          <option value="4">4 days</option>
-          <option value="5">5 days</option>
-        </select>
-        <button onclick="closePopup(),listItemEdit()" class="">OK</button>
-        <button onclick="closePopup()" class="">Cancel</button>
+        <button onclick="listItemDelete()" class="" id="yesDelete">Yes</button>
+        <button onclick="closePopup()" class="" id="">No</button>
+        <button onclick="maybeDelete()" class="" id="maybeDelete">Vielleicht</button>
       </div>
     </div>
   </div>
