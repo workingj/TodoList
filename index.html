@@ -14,7 +14,7 @@
     <style></style>
   </head>
 
-  <body background="img/todo_background.png" class=".bg-cover">
+  <body onload="updateTodoListHTML" background="img/todo_background.png" class=".bg-cover">
     <header class="text-center">
       <h1 class="logo-text">ToDo</h1>
     </header>
@@ -27,7 +27,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
-          <input class="peer h-full w-full outline-none text-sm text-gray-700 pr-2" type="text" id="search" placeholder="Search something.." />
+          <input onkeyup="searchTodolistItems()" class="peer h-full w-full outline-none text-sm text-gray-700 pr-2" type="text" id="search" placeholder="Search something.." />
         </div>
 
         <!-- Dropdown -->
@@ -42,26 +42,28 @@
       <ul class="w-full" id="todolist">
         <!-- ITEM Normal -->
         <li id="1701954201" data-due="false" data-done="false" class="list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
-          <input type="checkbox" data-id="1701954201" />
+          <i class="fa-regular fa-circle float-left fa-xl"></i>
+          <i class="fa-regular fa-circle-check float-left fa-xl"></i>
+          <!-- <input type="checkbox" data-id="1701954201" /> -->
           <span>Normal</span>
-          <i class="fas fa-edit edit-icon" data-id="1701954201" aria-hidden="true"></i>
-          <i class="fas fa-trash delete-icon" data-id="1701954201" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-edit edit-icon" data-id="1701954201" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-trash delete-icon" data-id="1701954201" aria-hidden="true"></i>
         </li>
 
         <!-- ITEM Normal Done -->
         <li id="1701954207" data-due="false" data-done="true" class="list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
           <input type="checkbox" data-id="1701954207" />
           <span>Normal Done</span>
-          <i class="fas fa-edit edit-icon" data-id="1701954207" aria-hidden="true"></i>
-          <i class="fas fa-trash delete-icon" data-id="1701954207" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-edit edit-icon" data-id="1701954207" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-trash delete-icon" data-id="1701954207" aria-hidden="true"></i>
         </li>
 
         <!-- ITEM Urgend -->
         <li id="1701954218" data-due="true" data-done="false" class="list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
           <input type="checkbox" data-id="1701954218" />
           <span>Urgend</span>
-          <i class="fas fa-edit edit-icon" data-id="1701954218" aria-hidden="true"></i>
-          <i class="fas fa-trash delete-icon" data-id="1701954218" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-edit edit-icon" data-id="1701954218" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-trash delete-icon" data-id="1701954218" aria-hidden="true"></i>
           <div class="due">3</div>
         </li>
 
@@ -69,8 +71,8 @@
         <li id="1701954227" data-due="true" data-done="true" class="list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
           <input type="checkbox" data-id="1701954227" />
           <span>Urgend Done</span>
-          <i class="fas fa-edit edit-icon" data-id="1701954227" aria-hidden="true"></i>
-          <i class="fas fa-trash delete-icon" data-id="1701954227" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-edit edit-icon" data-id="1701954227" aria-hidden="true"></i>
+          <i class="fa-xl fas fa-trash delete-icon" data-id="1701954227" aria-hidden="true"></i>
         </li>
       </ul>
 

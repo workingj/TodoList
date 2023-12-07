@@ -122,9 +122,12 @@ function createListitemHTML(item) {
   li.setAttribute("id", dataItemGetId(item));
   li.dataset.due = item.due;
   li.dataset.done = item.done;
+
   if (item.due) {
+    // Urgend
     li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]");
   } else {
+    // Normal
     li.setAttribute("class", "list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]");
   }
 
@@ -143,14 +146,14 @@ function createListitemHTML(item) {
 
   // Create Edit Button and add to Listitem
   let btnEdit = document.createElement("i");
-  btnEdit.setAttribute("class", "fas fa-edit edit-icon");
+  btnEdit.setAttribute("class", "fas fa-edit edit-icon fa-xl");
   btnEdit.dataset.id = dataItemGetId(item);
   btnEdit.addEventListener("click", openPopupEdit);
   li.appendChild(btnEdit);
 
   // Create Delete Button and add to Listitem
   let btnDelete = document.createElement("i");
-  btnDelete.setAttribute("class", "fas fa-trash delete-icon");
+  btnDelete.setAttribute("class", "fas fa-trash delete-icon fa-xl");
   btnDelete.dataset.id = dataItemGetId(item);
   btnDelete.addEventListener("click", openPopupDelete);
   li.appendChild(btnDelete);
