@@ -7,11 +7,30 @@
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   </head>
-  <body class="bg-gray-200">
-    <!-- Trigger button -->
-    <button onclick="openPopup()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Open Popup</button>
+  <body>
+    <!-- Trigger buttons -->
+    <button id="create-button" class="font-bold py-2 px-4 rounded">create</button>
+    <button id="edit-button" class="font-bold py-2 px-4 rounded">edit</button>
 
-    <!-- Popup container -->
+    <!-- Create Popup container -->
+    <div id="popup-create" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50">
+      <button onclick="closePopup()" class="">x</button>
+      <h2>New Entry</h2>
+      <textarea rows="3" placeholder="Enter Todo text..."></textarea>
+      <div>
+        <select>
+          <option value="deadline" selected>Deadline</option>
+          <option value="1">1 day</option>
+          <option value="2">2 days</option>
+          <option value="3">3 days</option>
+          <option value="4">4 days</option>
+          <option value="5">5 days</option>
+        </select>
+        <button onclick="closePopup()" class="">OK</button>
+      </div>
+    </div>
+
+    <!-- Edit Popup container -->
     <div id="popup-edit" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50">
       <button onclick="closePopup(this.id)" class="">x</button>
       <h2>New Entry</h2>
@@ -32,6 +51,6 @@
     <!-- Overlay background -->
     <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black opacity-50 hidden z-40" onclick="closePopup()"></div>
 
-    <script type="text/javascript" src="./openPopup.js"></script>
+    <script defer type="text/javascript" src="./openPopup.js"></script>
   </body>
 </html>
