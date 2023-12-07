@@ -1,0 +1,8 @@
+{
+  "prettier.bracketSameLine": true,
+  "prettier.singleAttributePerLine": false,
+  "prettier.printWidth": 1000,
+  "editor.formatOnSave": true,
+  "html.format.wrapLineLength": 1000,
+  "prettier.disableLanguages": ["html"]
+}
