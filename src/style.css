@@ -14,29 +14,11 @@ li[data-due="true"] {
 
 li[data-due="false"] {}
 
-.due {
-  display: inline-block;
-  border-radius: 50%;
-  background-color: red;
-  color: white;
-  font-weight: bold;
-  padding: 0;
-  font-size: 12px;
-  width: 18px;
-  height: 18px;
-  line-height: 16px;
-  text-align: center;
-  margin-right: -1em;
-}
-
-li:hover {
-  cursor: pointer;
-}
 
 .due {
   /* display: inline-block; */
   border-radius: 50%;
-  background-color: red;
+  background-color: #A60A2E;
   color: white;
   font-weight: bold;
   padding: 0;
@@ -45,7 +27,9 @@ li:hover {
   height: 18px;
   line-height: 18px;
   text-align: center;
-  /* margin-right: -1em; */
+  float: right;
+  margin-right: -6.5em;
+  margin-top: -1.5em;
 }
 
 .close-x {

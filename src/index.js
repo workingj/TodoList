@@ -34,7 +34,7 @@ function localStorageLoad() {
     let items = localStorage.getItem("todolist");
     try {
       return JSON.parse(items);
-    } catch (error) {}
+    } catch (error) { }
   } else {
     return [];
   }
@@ -57,22 +57,28 @@ function listItemCreateNew() {
     listitems.push(new TodoItem(text, deadline));
     localStorageUpdate(listitems);
     updateTodoListHTML();
+    closePopup();
   }
 }
 
-function listItemEdit(event) {
-  let textinput = document.querySelector("#todo-text");
-  let deadlineinput = document.querySelector("#deadline");
+function listItemEdit() {
+  const textinput = document.querySelector("#edit-text");
   const text = textinput.value;
-
   if (text != "") {
+    const deadlineinput = document.querySelector("#deadline-edit");
+    const id = currentEvent.target.dataset.id;
     const deadline = deadlineinput.value;
-    textinput.value = "";
 
     let listitems = localStorageLoad();
-    listitems.push(new TodoItem(text, deadline));
+    const i = listitems.findIndex((item) => item.id == id);
+
+    listitems[i].content = text;
+    listitems[i].dueDate = listitems[i].creationDate + deadline * 86400;
+    textinput.value = "";
+
     localStorageUpdate(listitems);
     updateTodoListHTML();
+    closePopup();
   }
 }
 
@@ -80,30 +86,18 @@ function listItemCheckBox(event) {
   const id = event.target.dataset.id;
   let items = localStorageLoad();
   let i = items.findIndex((item) => item.id == id);
+  const chekcid = "check" + event.target.dataset.id;
+  let checkbox = document.getElementById(chekcid);
 
   if (document.getElementById(id).dataset.done == "false") {
     document.getElementById(id).dataset.done = true;
     items[i].done = true;
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left fa-xl");
   } else {
     document.getElementById(id).dataset.done = false;
     items[i].done = false;
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left fa-xl");
   }
-  localStorageUpdate(items);
-}
-
-function listItemCheckBox(event) {
-  const id = event.target.dataset.id;
-  let items = localStorageLoad();
-  let i = items.findIndex((item) => item.id == id);
-
-  if (document.getElementById(id).dataset.done == "false") {
-    document.getElementById(id).dataset.done = true;
-    items[i].done = true;
-  } else {
-    document.getElementById(id).dataset.done = false;
-    items[i].done = false;
-  }
-  // console.table(items);
   localStorageUpdate(items);
 }
 
@@ -116,6 +110,7 @@ function listItemDelete() {
 
   localStorageUpdate(items);
   updateTodoListHTML();
+  closePopup();
 }
 
 function createListitemHTML(item) {
@@ -127,18 +122,24 @@ function createListitemHTML(item) {
 
   if (item.due) {
     // Urgend
-    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
   } else {
     // Normal
-    li.setAttribute("class", "list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
   }
 
   // Create Checkbox and add to Listitem
-  let checkbox = document.createElement("INPUT");
-  checkbox.setAttribute("type", "checkbox");
+  let checkbox = document.createElement("i");
   checkbox.dataset.id = dataItemGetId(item);
   checkbox.addEventListener("click", listItemCheckBox);
-  checkbox.checked = item.done;
+  checkbox.setAttribute("id", "check" + item.id);
+
+  if (item.done == true) {
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left fa-xl");
+  } else {
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left fa-xl");
+  }
+  checkbox.dataset.done = item.done;
   li.appendChild(checkbox);
 
   // Create Content Span
@@ -148,14 +149,14 @@ function createListitemHTML(item) {
 
   // Create Edit Button and add to Listitem
   let btnEdit = document.createElement("i");
-  btnEdit.setAttribute("class", "fas fa-edit edit-icon fa-xl");
+  btnEdit.setAttribute("class", "fas fa-edit edit-icon fa-lg");
   btnEdit.dataset.id = dataItemGetId(item);
   btnEdit.addEventListener("click", openPopupEdit);
   li.appendChild(btnEdit);
 
   // Create Delete Button and add to Listitem
   let btnDelete = document.createElement("i");
-  btnDelete.setAttribute("class", "fas fa-trash delete-icon fa-xl");
+  btnDelete.setAttribute("class", "fas fa-trash delete-icon fa-lg");
   btnDelete.dataset.id = dataItemGetId(item);
   btnDelete.addEventListener("click", openPopupDelete);
   li.appendChild(btnDelete);
@@ -163,7 +164,8 @@ function createListitemHTML(item) {
   if (item.due && !item.done) {
     let days = document.createElement("div");
     days.textContent = Math.floor((getTimeStamp() - item.dueDate) / 86400);
-    days.setAttribute("class", "due");
+    days.setAttribute("class", "due ");
+    days.setAttribute("style", "float:right;");
     li.appendChild(days);
   }
 
@@ -247,6 +249,14 @@ function openPopupCreate(event) {
   overlay.style.display = "block";
 }
 function openPopupEdit(event) {
+  const textinput = document.querySelector("#edit-text");
+  const deadlineinput = document.querySelector("#deadline-edit");
+  const id = event.target.dataset.id;
+  const listitems = localStorageLoad();
+  const i = listitems.findIndex((item) => item.id == id);
+  textinput.value = listitems[i].content;
+  deadlineinput.value = listitems[i].dueDate;
+
   currentEvent = event;
   popupEdit.style.display = "block";
   overlay.style.display = "block";
@@ -259,6 +269,7 @@ function openPopupDelete(event) {
 
 function maybeDelete() {
   listItemDelete() ? Math.round(Math.random()) === 1 : null;
+  closePopup();
 }
 
 function closePopup(a) {
