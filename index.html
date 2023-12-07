@@ -16,7 +16,8 @@
   <header class="text-center">
     <h1 class="logo-text">ToDo</h1>
   </header>
-  <div class="flex flex-col justify-center items-center max-w-full flex-grow div-back p-2 min-w-[300px]">
+  <div
+    class="flex flex-col justify-center items-center max-w-full flex-grow div-back p-2 min-w-[300px] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
 
 
     <!-- Search Bar -->
@@ -45,7 +46,7 @@
     <!-- List Items -->
     <ul class="w-full">
       <li
-        class="list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white">
+        class="list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
         <input type="checkbox" id="check-todo" />
         <span>Normaler Task</span>
         <i class="fas fa-trash-can delete-icon" onclick="openModal('modelConfirm')"></i>
@@ -53,14 +54,14 @@
 
       </li>
       <li
-        class="list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white">
+        class="list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
         <input type="checkbox" id="check-todo" />
         <span>Normaler Task</span>
         <i class="fas fa-trash-can delete-icon" onclick="openModal('modelConfirm')"></i>
         <i class="fas fa-edit edit-icon"></i>
       </li>
       <li
-        class="list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white">
+        class="list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
         <input type="checkbox" class="checkbox" id="check-todo" />
         <span>Urgent Task</span>
         <i class="fas fa-trash-can delete-icon" onclick="openModal('modelConfirm')"></i>
@@ -75,7 +76,7 @@
 
     <!-- Create Todo Button -->
     <button
-      class="add-button bg-white hover:bg-yellow-300 hover:text-gray-500 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow marge">
+      class="add-button bg-white hover:bg-caribbean-green-600 hover:text-gray-200 hover:border-caribbean-green-900 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow marge">
       <i class="fas fa-plus"></i>
     </button>
 
