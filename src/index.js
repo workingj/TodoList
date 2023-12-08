@@ -157,6 +157,7 @@ function createListitemHTML(item) {
   btnEdit.addEventListener("click", (event) => document.getElementById("edit-text").focus());
   document.getElementById("edit-text").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
+      listItemEdit();
       closePopup();
     }
   });
@@ -255,6 +256,7 @@ function openPopupCreate(event) {
   currentEvent = event;
   popupCreate.style.display = "block";
   overlay.style.display = "block";
+  document.getElementById("todo-text").focus();
 }
 function openPopupEdit(event) {
   const textinput = document.querySelector("#edit-text");
@@ -267,6 +269,7 @@ function openPopupEdit(event) {
   currentEvent = event;
   popupEdit.style.display = "block";
   overlay.style.display = "block";
+  document.getElementById("edit-text").focus();
 }
 function openPopupDelete(event) {
   currentEvent = event;
@@ -279,9 +282,17 @@ function maybeDelete() {
   closePopup();
 }
 
-function closePopup(a) {
+function closePopup() {
   popupCreate.style.display = "none";
   popupEdit.style.display = "none";
   popupDelete.style.display = "none";
   overlay.style.display = "none";
 }
+
+// Add enter key closing create popup
+document.getElementById("todo-text").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    listItemCreateNew();
+    closePopup();
+  }
+});
