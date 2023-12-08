@@ -65,12 +65,11 @@ function listItemCreateNew() {
 function listItemEdit() {
   const textinput = document.querySelector("#edit-text");
   const text = textinput.value;
+
   if (text != "") {
     const deadlineinput = document.querySelector("#deadline-edit");
     const id = currentEvent.target.dataset.id;
     const deadline = deadlineinput.value;
-
-    console.log(deadline);
 
     let listitems = localStorageLoad();
     const i = listitems.findIndex((item) => item.id == id);
