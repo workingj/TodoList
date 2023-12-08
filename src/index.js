@@ -33,7 +33,7 @@ function localStorageLoad() {
     let items = localStorage.getItem("todolist");
     try {
       return JSON.parse(items);
-    } catch (error) { }
+    } catch (error) {}
   } else {
     return [];
   }
@@ -67,6 +67,8 @@ function listItemEdit() {
     const id = currentEvent.target.dataset.id;
     const deadline = deadlineinput.value;
 
+    console.log(deadline);
+
     let listitems = localStorageLoad();
     const i = listitems.findIndex((item) => item.id == id);
 
@@ -90,11 +92,11 @@ function listItemCheckBox(event) {
   if (document.getElementById(id).dataset.done == "false") {
     document.getElementById(id).dataset.done = true;
     items[i].done = true;
-    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left");
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left mr-2");
   } else {
     document.getElementById(id).dataset.done = false;
     items[i].done = false;
-    checkbox.setAttribute("class", "fa-regular fa-circle float-left");
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left mr-2");
   }
   localStorageUpdate(items);
 }
@@ -133,9 +135,9 @@ function createListitemHTML(item) {
   checkbox.setAttribute("id", "check" + item.id);
 
   if (item.done == true) {
-    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left fa-xl");
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left mr-2");
   } else {
-    checkbox.setAttribute("class", "fa-regular fa-circle float-left fa-xl");
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left mr-2");
   }
   checkbox.dataset.done = item.done;
   li.appendChild(checkbox);
@@ -253,8 +255,7 @@ function openPopupEdit(event) {
   const listitems = localStorageLoad();
   const i = listitems.findIndex((item) => item.id == id);
   textinput.value = listitems[i].content;
-  deadlineinput.value = listitems[i].dueDate;
-
+  deadlineinput.value = (listitems[i].dueDate - listitems[i].creationDate) / 86400;
   currentEvent = event;
   popupEdit.style.display = "block";
   overlay.style.display = "block";
