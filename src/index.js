@@ -122,10 +122,10 @@ function createListitemHTML(item) {
 
   if (item.due) {
     // Urgend
-    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium");
   } else {
     // Normal
-    li.setAttribute("class", "list-item bg-gradient-to-b from-sky-300 to-eastern-blue-500 h-flow p-4 flex-1 w-full rounded-lg text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-sky-300 to-eastern-blue-500 h-flow p-4 flex-1 w-full rounded-lg text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium");
   }
 
   // Create Checkbox and add to Listitem
