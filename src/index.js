@@ -33,7 +33,9 @@ function localStorageLoad() {
     let items = localStorage.getItem("todolist");
     try {
       return JSON.parse(items);
-    } catch (error) { }
+    } catch (error) {
+      console.error(error);
+    }
   } else {
     return [];
   }
@@ -267,7 +269,7 @@ function openPopupDelete(event) {
 }
 
 function maybeDelete() {
-  listItemDelete() ? Math.round(Math.random()) === 1 : null;
+  Math.round(Math.random()) === 1 ? listItemDelete() : null;
   closePopup();
 }
 
