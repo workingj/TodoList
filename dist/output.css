@@ -839,28 +839,20 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-tumbleweed-300{
-  --tw-gradient-from: #eaac87 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(234 172 135 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.from-eastern-blue-300{
-  --tw-gradient-from: #76e6ea var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(118 230 234 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .from-sky-300{
   --tw-gradient-from: #7dd3fc var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(125 211 252 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-sky-200{
-  --tw-gradient-from: #bae6fd var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(186 230 253 / 0) var(--tw-gradient-to-position);
+.from-tumbleweed-300{
+  --tw-gradient-from: #eaac87 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(234 172 135 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-eastern-blue-500{
+  --tw-gradient-to: #1bb4bf var(--tw-gradient-to-position);
 }
 
 .to-eastern-blue-800{
@@ -871,16 +863,12 @@ video {
   --tw-gradient-to: #c37d70 var(--tw-gradient-to-position);
 }
 
-.to-eastern-blue-600{
-  --tw-gradient-to: #1b9aaa var(--tw-gradient-to-position);
-}
-
-.to-eastern-blue-500{
-  --tw-gradient-to: #1bb4bf var(--tw-gradient-to-position);
-}
-
 .bg-cover{
   background-size: cover;
+}
+
+.bg-fixed{
+  background-attachment: fixed;
 }
 
 .p-2{
@@ -977,6 +965,11 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-100{
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -1193,6 +1186,18 @@ textarea {
     margin: 0px;
   }
 
+  .md\:mr-2{
+    margin-right: 0.5rem;
+  }
+
+  .md\:mr-4{
+    margin-right: 1rem;
+  }
+
+  .md\:ml-4{
+    margin-left: 1rem;
+  }
+
   .md\:w-\[80\%\]{
     width: 80%;
   }
@@ -1203,5 +1208,9 @@ textarea {
 
   .md\:justify-between{
     justify-content: space-between;
+  }
+
+  .md\:pr-2{
+    padding-right: 0.5rem;
   }
 }
