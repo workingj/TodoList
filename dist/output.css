@@ -988,10 +988,9 @@ video {
 }
 
 i {
+  padding: 3px;
   float: right;
-  padding: 0 3px;
   margin-top: auto;
-  margin-bottom: auto;
 }
 
 .marge {
@@ -1024,17 +1023,16 @@ li {
 }
 
 li[data-done="true"] {
-  border: 1px solid green !important;
   text-decoration: line-through;
-  color: green;
+  color: #7a7a7a;
 }
 
 li[data-done="false"] {
-  border: 1px solid silver;
+  /* border: 1px solid silver; */
 }
 
 li[data-due="true"] {
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
 }
 
 li[data-due="false"] {}
@@ -1042,16 +1040,32 @@ li[data-due="false"] {}
 .due {
   /* display: inline-block; */
   border-radius: 50%;
-  background-color: red;
+  background-color: #A60A2E;
   color: white;
   font-weight: bold;
   padding: 0;
   font-size: 12px;
   width: 18px;
   height: 18px;
-  line-height: 16px;
+  line-height: 18px;
   text-align: center;
-  /* margin-right: -1em; */
+  float: right;
+  margin-right: -5.7em;
+  margin-top: -1.5em;
+}
+
+.close-x {
+  margin-top: -0.5em;
+  margin-right: -0.5em;
+}
+
+select {
+  display: inline-block;
+}
+
+textarea {
+  border: 1px solid #e0e0e0;
+  margin-bottom: 1em;
 }
 
 .hover\:bg-blue-700:hover {
@@ -1161,5 +1175,9 @@ li[data-due="false"] {}
 
   .md\:justify-between {
     justify-content: space-between;
+  }
+
+  .md\:pr-2 {
+    padding-right: 0.5rem;
   }
 }
