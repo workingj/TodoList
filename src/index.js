@@ -147,14 +147,14 @@ function createListitemHTML(item) {
 
   // Create Edit Button and add to Listitem
   let btnEdit = document.createElement("i");
-  btnEdit.setAttribute("class", "fas fa-edit edit-icon fa-lg");
+  btnEdit.setAttribute("class", "fa-regular fa-edit edit-icon");
   btnEdit.dataset.id = dataItemGetId(item);
   btnEdit.addEventListener("click", openPopupEdit);
   li.appendChild(btnEdit);
 
   // Create Delete Button and add to Listitem
   let btnDelete = document.createElement("i");
-  btnDelete.setAttribute("class", "fas fa-trash delete-icon fa-lg");
+  btnDelete.setAttribute("class", "fa-regular fa-trash-can delete-icon ");
   btnDelete.dataset.id = dataItemGetId(item);
   btnDelete.addEventListener("click", openPopupDelete);
   li.appendChild(btnDelete);
