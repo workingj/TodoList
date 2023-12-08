@@ -154,6 +154,12 @@ function createListitemHTML(item) {
   btnEdit.setAttribute("class", "fa-regular fa-edit edit-icon");
   btnEdit.dataset.id = dataItemGetId(item);
   btnEdit.addEventListener("click", openPopupEdit);
+  btnEdit.addEventListener("click", (event) => document.getElementById("edit-text").focus());
+  document.getElementById("edit-text").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      closePopup();
+    }
+  });
   li.appendChild(btnEdit);
 
   // Create Delete Button and add to Listitem
