@@ -90,11 +90,11 @@ function listItemCheckBox(event) {
   if (document.getElementById(id).dataset.done == "false") {
     document.getElementById(id).dataset.done = true;
     items[i].done = true;
-    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left fa-xl");
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left");
   } else {
     document.getElementById(id).dataset.done = false;
     items[i].done = false;
-    checkbox.setAttribute("class", "fa-regular fa-circle float-left fa-xl");
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left");
   }
   localStorageUpdate(items);
 }
