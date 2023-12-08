@@ -1,5 +1,6 @@
 const popupCreate = document.querySelector("#popupCreate");
 const popupDelete = document.querySelector("#popupDelete");
+const popupEasterEgg = document.querySelector("#popupEasterEgg");
 const popupEdit = document.querySelector("#popupEdit");
 const overlay = document.getElementById("overlay");
 let currentEvent = "";
@@ -64,12 +65,11 @@ function listItemCreateNew() {
 function listItemEdit() {
   const textinput = document.querySelector("#edit-text");
   const text = textinput.value;
+
   if (text != "") {
     const deadlineinput = document.querySelector("#deadline-edit");
     const id = currentEvent.target.dataset.id;
     const deadline = deadlineinput.value;
-
-    console.log(deadline);
 
     let listitems = localStorageLoad();
     const i = listitems.findIndex((item) => item.id == id);
@@ -258,6 +258,7 @@ function openPopupCreate(event) {
   overlay.style.display = "block";
   document.getElementById("todo-text").focus();
 }
+
 function openPopupEdit(event) {
   const textinput = document.querySelector("#edit-text");
   const deadlineinput = document.querySelector("#deadline-edit");
@@ -277,6 +278,11 @@ function openPopupDelete(event) {
   overlay.style.display = "block";
 }
 
+function easterEgg() {
+  let text = document.getElementById("eggField");
+  popupEasterEgg.style.display = "block";
+}
+
 function maybeDelete() {
   Math.round(Math.random()) === 1 ? listItemDelete() : null;
   closePopup();
@@ -286,6 +292,7 @@ function closePopup() {
   popupCreate.style.display = "none";
   popupEdit.style.display = "none";
   popupDelete.style.display = "none";
+  popupEasterEgg.style.display = "none";
   overlay.style.display = "none";
 }
 
