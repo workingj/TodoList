@@ -17,18 +17,21 @@
   </button>
 
   <!-- Popup container -->
-  <div id="popup-create" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50 w-96">
+
+  <div id="popup-create" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-md rounded-md hidden z-50 w-80">
     <div style="display: flex; justify-content:flex-end; padding-bottom: 1em;"><button onclick="closePopup()" class="" style="display: flex; justify-self:right;">x</button></div>
     <p class="mb-4">Do you really want to delete?</p>
     <div class="pupUp-container" style="display: flex; justify-content: space-between;">
-      <button onclick="yesDelete()" class="w-20 bg-shiraz-400 border-2 border-shiraz-500" id="yesDelete">Yes</button>
-      <button onclick="closePopup()" class="w-20 bg-eastern-blue-400 border-2 border-eastern-blue-500" id="">No</button>
-      <button id="maybe" onclick="maybeDelete()" class="w-20 bg-lightning-yellow-400 border-2 border-lightning-yellow-500" id="maybeDelete">Maybe*</button>
+      <button onclick="yesDelete()" class="w-16 bg-shiraz-400 border-2 border-shiraz-500" id="yesDelete">Yes</button>
+      <button onclick="closePopup()" class="w-16 bg-eastern-blue-400 border-2 border-eastern-blue-500" id="">No</button>
+      <button id="maybe" onclick="maybeDelete()" class="w-16 bg-yellow-400 border-2 border-yellow-500" id="maybeDelete">Maybe*</button>
 
     </div>
-    <p id="textField" style="display: none;" class="w-48 pt-4"><small>
-        ♫♪ I don't know...<br>Can you repeat the question? ♪♫
-        <br><em class="text-xs">They Might Be Giants - Boss Of Me</em></small></p>
+    <p id="textField" style="display: none;" class="w-72 pt-4">
+      ♫♪ I don't know...<br>Can you repeat the question? ♪♫
+      <br><em class="text-s">They Might Be Giants - Boss Of Me</em>
+    </p>
+
   </div>
 
 

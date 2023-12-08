@@ -33,7 +33,9 @@ function localStorageLoad() {
     let items = localStorage.getItem("todolist");
     try {
       return JSON.parse(items);
-    } catch (error) { }
+    } catch (error) {
+      console.error(error);
+    }
   } else {
     return [];
   }
@@ -67,6 +69,8 @@ function listItemEdit() {
     const id = currentEvent.target.dataset.id;
     const deadline = deadlineinput.value;
 
+    console.log(deadline);
+
     let listitems = localStorageLoad();
     const i = listitems.findIndex((item) => item.id == id);
 
@@ -90,11 +94,11 @@ function listItemCheckBox(event) {
   if (document.getElementById(id).dataset.done == "false") {
     document.getElementById(id).dataset.done = true;
     items[i].done = true;
-    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left");
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left mr-2");
   } else {
     document.getElementById(id).dataset.done = false;
     items[i].done = false;
-    checkbox.setAttribute("class", "fa-regular fa-circle float-left");
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left mr-2");
   }
   localStorageUpdate(items);
 }
@@ -120,10 +124,10 @@ function createListitemHTML(item) {
 
   if (item.due) {
     // Urgend
-    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-tumbleweed-300 to-my-pink-500 h-flow p-4 flex-1 w-full rounded-lg items-center text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-my-pink-700 hover:to-my-pink-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium");
   } else {
     // Normal
-    li.setAttribute("class", "list-item bg-gradient-to-b from-eastern-blue-200 to-eastern-blue-800 h-flow p-4 flex-1 w-full rounded-lg text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium text-lightning-yellow-100");
+    li.setAttribute("class", "list-item bg-gradient-to-b from-sky-300 to-eastern-blue-500 h-flow p-4 flex-1 w-full rounded-lg text-shark-700 border-2 border-solid border-white hover:bg-gradient-to-b hover:from-eastern-blue-700 hover:to-eastern-blue-500 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-lg font-medium");
   }
 
   // Create Checkbox and add to Listitem
@@ -133,9 +137,9 @@ function createListitemHTML(item) {
   checkbox.setAttribute("id", "check" + item.id);
 
   if (item.done == true) {
-    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left fa-xl");
+    checkbox.setAttribute("class", "fa-regular fa-circle-check float-left mr-2");
   } else {
-    checkbox.setAttribute("class", "fa-regular fa-circle float-left fa-xl");
+    checkbox.setAttribute("class", "fa-regular fa-circle float-left mr-2");
   }
   checkbox.dataset.done = item.done;
   li.appendChild(checkbox);
@@ -150,6 +154,13 @@ function createListitemHTML(item) {
   btnEdit.setAttribute("class", "fa-regular fa-edit edit-icon");
   btnEdit.dataset.id = dataItemGetId(item);
   btnEdit.addEventListener("click", openPopupEdit);
+  btnEdit.addEventListener("click", (event) => document.getElementById("edit-text").focus());
+  document.getElementById("edit-text").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      listItemEdit();
+      closePopup();
+    }
+  });
   li.appendChild(btnEdit);
 
   // Create Delete Button and add to Listitem
@@ -245,6 +256,7 @@ function openPopupCreate(event) {
   currentEvent = event;
   popupCreate.style.display = "block";
   overlay.style.display = "block";
+  document.getElementById("todo-text").focus();
 }
 function openPopupEdit(event) {
   const textinput = document.querySelector("#edit-text");
@@ -253,11 +265,11 @@ function openPopupEdit(event) {
   const listitems = localStorageLoad();
   const i = listitems.findIndex((item) => item.id == id);
   textinput.value = listitems[i].content;
-  deadlineinput.value = listitems[i].dueDate;
-
+  deadlineinput.value = (listitems[i].dueDate - listitems[i].creationDate) / 86400;
   currentEvent = event;
   popupEdit.style.display = "block";
   overlay.style.display = "block";
+  document.getElementById("edit-text").focus();
 }
 function openPopupDelete(event) {
   currentEvent = event;
@@ -266,13 +278,21 @@ function openPopupDelete(event) {
 }
 
 function maybeDelete() {
-  listItemDelete() ? Math.round(Math.random()) === 1 : null;
+  Math.round(Math.random()) === 1 ? listItemDelete() : null;
   closePopup();
 }
 
-function closePopup(a) {
+function closePopup() {
   popupCreate.style.display = "none";
   popupEdit.style.display = "none";
   popupDelete.style.display = "none";
   overlay.style.display = "none";
 }
+
+// Add enter key closing create popup
+document.getElementById("todo-text").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    listItemCreateNew();
+    closePopup();
+  }
+});
