@@ -25,6 +25,7 @@ class TodoItem {
 function dataItemGetContent(item) {
   return item.content;
 }
+
 function dataItemGetId(item) {
   return item.id + "";
 }
@@ -41,6 +42,7 @@ function localStorageLoad() {
     return [];
   }
 }
+
 function localStorageUpdate(listitems) {
   localStorage.setItem("todolist", JSON.stringify(listitems));
 }
