@@ -625,10 +625,6 @@ video {
   display: flex;
 }
 
-.table{
-  display: table;
-}
-
 .grid{
   display: grid;
 }
@@ -727,6 +723,10 @@ video {
   justify-content: center;
 }
 
+.justify-items-end{
+  justify-items: end;
+}
+
 .overflow-hidden{
   overflow: hidden;
 }
@@ -768,11 +768,6 @@ video {
 .border-gray-300{
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
-.border-gray-400{
-  --tw-border-opacity: 1;
-  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
 .border-shiraz-500{
@@ -910,10 +905,6 @@ video {
   font-weight: 500;
 }
 
-.font-semibold{
-  font-weight: 600;
-}
-
 .text-gray-300{
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
@@ -922,11 +913,6 @@ video {
 .text-gray-700{
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
-.text-gray-800{
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
 .text-gray-900{
@@ -957,12 +943,6 @@ video {
   opacity: 0.5;
 }
 
-.shadow{
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .shadow-\[rgba\(0\2c _0\2c _0\2c _0\.24\)_0px_3px_8px\]{
   --tw-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   --tw-shadow-colored: 0px 3px 8px var(--tw-shadow-color);
@@ -985,14 +965,9 @@ video {
 }
 
 i {
+  padding: 3px;
   float: right;
-  padding: 0 3px;
   margin-top: auto;
-  margin-bottom: auto;
-}
-
-.marge {
-  margin: 1rem;
 }
 
 .div-back {
@@ -1057,11 +1032,6 @@ li[data-due="false"] {
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-yellow-300:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 224 71 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gradient-to-b:hover{
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -1084,11 +1054,6 @@ li[data-due="false"] {
 
 .hover\:to-my-pink-500:hover{
   --tw-gradient-to: #c37d70 var(--tw-gradient-to-position);
-}
-
-.hover\:text-gray-500:hover{
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-\[rgba\(0\2c _0\2c _0\2c _0\.24\)_0px_3px_8px\]:hover{
